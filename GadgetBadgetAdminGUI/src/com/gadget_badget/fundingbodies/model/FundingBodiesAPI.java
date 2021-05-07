@@ -11,13 +11,13 @@ import java.util.Map;
 import java.util.Scanner;
 
 
-@WebServlet("/OrderAPI")
-public class OrderAPI extends HttpServlet {
+@WebServlet("/FundingBodiesAPI")
+public class FundingBodiesAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	OrderServlet orderObj = new OrderServlet();
+	FundingBodiesServlet FundingBodiesObj = new FundingBodiesServlet();
 	
-	public OrderAPI() {
+	public FundingBodiesAPI() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,7 +33,7 @@ public class OrderAPI extends HttpServlet {
 			throws ServletException, IOException {
 		
 		// TODO Auto-generated method stub
-		String outputString = orderObj.insertOrder(request.getParameter("orderCode"), 
+		String outputString = FundingBodiesObj.insertFundingBodies(request.getParameter("FundingBodiesCode"), 
 				request.getParameter("customerID"),
 				request.getParameter("customerEmail"), 
 				request.getParameter("customerName"), 
@@ -49,9 +49,9 @@ public class OrderAPI extends HttpServlet {
 		
 		Map paras = getParasMap(request);
 
-		String outputString = orderObj.updateOrder(
-				paras.get("orderID").toString(),
-				paras.get("orderCode").toString(),
+		String outputString = FundingBodiesObj.updateFundingBodies(
+				paras.get("FundingBodiesID").toString(),
+				paras.get("FundingBodiesCode").toString(),
 				paras.get("customerID").toString(), 
 				paras.get("customerEmail").toString(), 
 				paras.get("customerName").toString(),
@@ -67,7 +67,7 @@ public class OrderAPI extends HttpServlet {
 		
 		// TODO Auto-generated method stub
 		Map paras = getParasMap(request);
-		String output = orderObj.deleteOrder(paras.get("orderID").toString());
+		String output = FundingBodiesObj.deleteFundingBodies(paras.get("FundingBodiesID").toString());
 		response.getWriter().write(output); 		
 	}
 
